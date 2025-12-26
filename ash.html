@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Personal Portfolio</title>
+
+    <style>
+      /* ================= CUSTOM SETTINGS (EASY TO CHANGE) ================= */
+      :root {
+        --primary-color: #6a11cb; /* main theme color */
+        --secondary-color: #2575fc; /* gradient second color */
+        --accent-color: #ff9800; /* highlight color */
+        --light-bg: #f4f6ff; /* section background */
+        --dark-text: #1f2a44;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      body {
+        background: var(--light-bg);
+        color: var(--dark-text);
+      }
+
+      /* ---------- NAVBAR ---------- */
+      .nav {
+        width: 100%;
+        height: 90px;
+        background: linear-gradient(
+          90deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 40px;
+        position: fixed;
+        top: 0;
+        z-index: 1000;
+        animation: slideFade 1s ease;
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: bold;
+        color: white;
+      }
+
+      .nav ul {
+        display: flex;
+        gap: 25px;
+        list-style: none;
+      }
+
+      .nav a {
+        text-decoration: none;
+        font-size: 20px;
+        color: white;
+        transition: 0.3s;
+      }
+
+      .nav a:hover {
+        color: var(--accent-color);
+      }
+
+      /* ---------- HOME ---------- */
+      #home {
+        height: 100vh;
+        padding-top: 150px;
+        animation: zoomIn 1.2s ease;
+      }
+
+      .home {
+        margin-left: 100px;
+      }
+
+      .home h4 {
+        font-size: 45px;
+        color: var(--secondary-color);
+      }
+
+      .home h2 {
+        font-size: 55px;
+      }
+
+      .home h2 span {
+        font-size: 65px;
+        color: var(--accent-color);
+        border-right: 3px solid var(--accent-color);
+        white-space: nowrap;
+        overflow: hidden;
+        animation: typing 3s steps(12), blink 0.6s infinite;
+        display: inline-block;
+      }
+
+      .home h5 {
+        font-size: 30px;
+        margin-top: 10px;
+        color: var(--primary-color);
+      }
+
+      .home img {
+        position: absolute;
+        right: 100px;
+        bottom: 100px;
+        height: 350px;
+        animation: floatRotate 4s ease-in-out infinite;
+      }
+
+      .btn {
+        margin-top: 40px;
+        width: 220px;
+        height: 45px;
+        border-radius: 25px;
+        border: none;
+        background: linear-gradient(
+          90deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.4s;
+      }
+
+      .btn:hover {
+        transform: scale(1.1);
+        background: white;
+        color: var(--primary-color);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      }
+
+      /* ---------- ABOUT ---------- */
+      #about {
+        background: linear-gradient(
+          120deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        color: white;
+        padding: 80px 100px;
+        animation: fadeUp 1.2s ease;
+      }
+
+      #about h2 {
+        text-align: center;
+        font-size: 60px;
+      }
+
+      .line {
+        width: 80%;
+        height: 2px;
+        background: white;
+        margin: 40px auto;
+      }
+
+      #about p {
+        font-size: 24px;
+        line-height: 1.6;
+      }
+      /*----------Education--------------------*/
+      #education {
+        padding-top: 60px;
+      }
+      #education h3 {
+        margin-left: 600px;
+        font-size: 50px;
+        color: #6a11cb;
+      }
+      #education .class {
+        margin-left: 450px;
+        margin-top: 50px;
+      }
+      #education .class h4 {
+        font-size: 30px;
+        margin-top: 15px;
+      }
+      #education .class h6 {
+        font-size: 30px;
+        color: blue;
+        margin-top: 20px;
+      }
+      #education .class p {
+        font-size: 25px;
+        margin-top: 10px;
+      }
+      /* ---------- SKILLS ---------- */
+      #skills {
+        padding: 80px;
+        animation: fadeUp 1.2s ease;
+      }
+      #skills h3 {
+        margin-top: 100px;
+        font-size: 50px;
+        margin-left: 550px;
+        color: blueviolet;
+      }
+      #skills .class p {
+        margin-top: 30px;
+        text-align: center;
+        font-size: 30px;
+      }
+
+      .skill-container {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        margin-top: 60px;
+      }
+
+      .tech,
+      .soft {
+        width: 300px;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.2);
+        transition: 0.4s;
+        background: white;
+      }
+
+      .tech:hover,
+      .soft:hover {
+        transform: scale(1.05);
+      }
+
+      .tech h5,
+      .soft h5 {
+        color: var(--accent-color);
+        font-size: 24px;
+      }
+
+      .tech li,
+      .soft li {
+        margin-top: 15px;
+        font-size: 20px;
+        font-weight: bold;
+        color: var(--dark-text);
+      }
+
+      /* ---------- CERTIFICATIONS ---------- */
+      #cert {
+        background: var(--secondary-color);
+        color: white;
+        padding: 80px 100px;
+        animation: fadeUp 1.2s ease;
+      }
+
+      #cert h2 {
+        text-align: center;
+        font-size: 55px;
+      }
+
+      /* ---------- CONTACT ---------- */
+      #cont {
+        padding: 80px;
+        animation: fadeUp 1.2s ease;
+      }
+
+      #cont h2 {
+        text-align: center;
+        font-size: 55px;
+        color: var(--primary-color);
+      }
+
+      .box {
+        width: 350px;
+        margin: 50px auto;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.2);
+        transition: 0.4s;
+        background: white;
+      }
+
+      .box:hover {
+        transform: translateY(-15px) rotate(1deg);
+      }
+
+      /* ---------- ANIMATIONS ---------- */
+      @keyframes slideFade {
+        from {
+          transform: translateY(-100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes blink {
+        50% {
+          border-color: transparent;
+        }
+      }
+
+      @keyframes floatRotate {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-20px) rotate(2deg);
+        }
+      }
+
+      @keyframes zoomIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="nav">
+      <div class="logo">Portfolio.</div>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#cert">Certification</a></li>
+        <li><a href="#cont">Contact</a></li>
+      </ul>
+    </div>
+
+    <section id="home">
+      <div class="home">
+        <h4>Hello,</h4>
+        <h2>I'm <span>Kalaiselvi M</span></h2>
+        <h5>A Passionate Artifical Intelligence</h5>
+        <img src="img/port.jpg" alt="profile" />
+        <a href="resume.pdf" download> </a>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+      <h2>About Me</h2>
+      <div class="line"></div>
+      <p>
+        I am a passionate student exploring the domain of Artificial
+        Intelligence. I enjoy building intelligent systems, understanding how
+        machines learn, and applying AI concepts in real-world scenarios. My
+        goal is to become a skilled AI engineer and contribute to innovative
+        technology.
+      </p>
+      <p>
+        I am constantly learning new tools, programming languages, and AI
+        techniques. I believe in growth through practice, creativity, and
+        consistency.
+      </p>
+    </section>
+    <!-- EDUCATION -->
+    <section id="education">
+      <h3>Education</h3>
+      <div class="class">
+        <h4>Postgraduate: MCA (2025 – 2027)</h4>
+        <h6>Institution :</h6>
+        <p>Arcot Sri Mahalakshmi Women's College</p>
+        <p>Thiruvalluvar University</p>
+
+        <h4>Undergraduate: BCA (2022 – 2025)</h4>
+        <h6>Institution :</h6>
+        <p>Arcot Sri Mahalakshmi Women's College</p>
+        <p>Thiruvalluvar University</p>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h3>Skills</h3>
+      <div class="class">
+        <p>Python Programming</p>
+        <p style="margin-left: 110px">Basics of Artificial Intelligence</p>
+        <p>HTML,CSS,Javascript</p>
+      </div>
+    </section>
+    <section id="cert">
+      <div class="cert">
+        <a href="cerificate.pdf"> Basics of Artificial Intelligence. </a>
+        <p>- Great Learning.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT INFORMATION -->
+    <section id="cont">
+      <h2>Contact Information</h2>
+      <div class="box">
+        <h4>Email:</h4>
+        <h5>kalaiselvimargubandhu@gmail.com</h5>
+        <h4>Phone:</h4>
+        <h6>XXXXXXXXXX</h6>
+      </div>
+    </section>
+  </body>
+</html>
